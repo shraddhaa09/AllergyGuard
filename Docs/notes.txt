@@ -1,0 +1,8 @@
+OS              Windows 11 64-bit
+Python          3.12.10
+Python path     C:\Users\hp\AppData\Local\Programs\Python\Python312\python.exe
+Git             2.50.1
+VS Code         1.132.0
+Git branch      main
+GitHub remote   configured
+Project         C:\sem5\edi\AllergyGuard
