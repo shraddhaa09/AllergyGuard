@@ -18,7 +18,6 @@ venv/
 *.safetensors
 
 # Data
-data/raw/
 data/processed/
 
 # Logs

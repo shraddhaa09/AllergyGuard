@@ -1,0 +1,6 @@
+image,valid_food_label,ingredient_list_available,contains_statement_available,ground_truth_allergens,annotation_status,annotation_source
+food_ingredients.webp,True,True,True,"WHEAT,SOY,MILK",VERIFIED,Explicit CONTAINS statement on label
+oreo.jpg,True,True,True,,UNCERTAIN,Label visible but photograph too blurry for reliable manual annotation
+random.jpg,True,True,False,,VERIFIED,Ingredient list manually inspected
+restaurant.jpg,False,False,False,,EXCLUDED,"Restaurant menu, not packaged-food label"
+test_image.jpg,False,False,False,,EXCLUDED,No useful food-label text
