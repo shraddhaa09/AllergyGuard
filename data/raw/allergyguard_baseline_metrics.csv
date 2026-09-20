@@ -1,0 +1,4 @@
+allergen,precision,recall,f1_score,support
+WHEAT,1.0,1.0,1.0,1
+SOY,1.0,1.0,1.0,1
+MILK,1.0,1.0,1.0,1
