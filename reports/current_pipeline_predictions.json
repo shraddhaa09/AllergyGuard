@@ -1,0 +1,854 @@
+[
+  {
+    "image": "food_ingredients.webp",
+    "ground_truth": {
+      "allergens": [
+        "WHEAT",
+        "SOY",
+        "MILK"
+      ],
+      "annotation_status": "VERIFIED",
+      "annotation_source": "Explicit CONTAINS statement on label"
+    },
+    "ocr_text": "UNBLEACHED ENRICHED FLOUR (WHEAT FLOUR, NIACIN, REDUCED IRON, THIAMINE MONONITRATE 0% {VITAMIN B1}, RIBOFLAVIN (VITAMIN B2}, FOLIC ACID), FOR BEST WHEN USED BY 5% SEMISWEET CHOCOLATE CHIPS (SUGAR, CHOCOLAT\u00c9, PLEASE SEE DATE PRINTED COCOA BUTTER, DEXTROSE, SOY LECITHIN, MILK), SUGAR, 1% SOYBEAN OIL, PARTIALLY HYDROGENATED COTTONSEED 26NO/11AE 1g 7% OIL, HIGH FRUCTOSE CORN SYRUP, SALT, BAKING SODA, NATURAL AND ARTIFICIAL FLAVOR, CARAMEL COLOR. 1g 3%",
+    "ingredients": [
+      "UNBLEACHED ENRICHED FLOUR",
+      "WHEAT FLOUR",
+      "NIACIN",
+      "REDUCED IRON",
+      "THIAMINE MONONITRATE",
+      "VITAMIN B1",
+      "RIBOFLAVIN",
+      "VITAMIN B2",
+      "FOLIC ACID",
+      "SEMISWEET CHOCOLATE CHIPS",
+      "SUGAR",
+      "CHOCOLATE",
+      "COCOA BUTTER",
+      "DEXTROSE",
+      "SOY LECITHIN",
+      "MILK",
+      "SUGAR",
+      "SOYBEAN OIL",
+      "PARTIALLY HYDROGENATED COTTONSEED OIL",
+      "HIGH FRUCTOSE CORN SYRUP",
+      "SALT",
+      "BAKING SODA",
+      "NATURAL AND ARTIFICIAL FLAVOR",
+      "CARAMEL COLOR"
+    ],
+    "normalized": [
+      {
+        "raw_term": "UNBLEACHED ENRICHED FLOUR",
+        "cleaned_term": "enriched flour",
+        "normalized_term": "enriched flour",
+        "canonical_concept": "wheat",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": "WHEAT",
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "WHEAT FLOUR",
+        "cleaned_term": "wheat flour",
+        "normalized_term": "wheat flour",
+        "canonical_concept": "wheat",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": "WHEAT",
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "NIACIN",
+        "cleaned_term": "niacin",
+        "normalized_term": "niacin",
+        "canonical_concept": "niacin",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "REDUCED IRON",
+        "cleaned_term": "reduced iron",
+        "normalized_term": "reduced iron",
+        "canonical_concept": "reduced iron",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "THIAMINE MONONITRATE",
+        "cleaned_term": "thiamine mononitrate",
+        "normalized_term": "thiamine mononitrate",
+        "canonical_concept": "thiamine mononitrate",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "VITAMIN B1",
+        "cleaned_term": "vitamin b1",
+        "normalized_term": "vitamin b1",
+        "canonical_concept": "vitamin b1",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "RIBOFLAVIN",
+        "cleaned_term": "riboflavin",
+        "normalized_term": "riboflavin",
+        "canonical_concept": "riboflavin",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "VITAMIN B2",
+        "cleaned_term": "vitamin b2",
+        "normalized_term": "vitamin b2",
+        "canonical_concept": "vitamin b2",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "FOLIC ACID",
+        "cleaned_term": "folic acid",
+        "normalized_term": "folic acid",
+        "canonical_concept": "folic acid",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "SEMISWEET CHOCOLATE CHIPS",
+        "cleaned_term": "semisweet chocolate chips",
+        "normalized_term": "semisweet chocolate chips",
+        "canonical_concept": "chocolate chips",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "SUGAR",
+        "cleaned_term": "sugar",
+        "normalized_term": "sugar",
+        "canonical_concept": "sugar",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "CHOCOLATE",
+        "cleaned_term": "chocolate",
+        "normalized_term": "chocolate",
+        "canonical_concept": "chocolate",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "COCOA BUTTER",
+        "cleaned_term": "cocoa butter",
+        "normalized_term": "cocoa butter",
+        "canonical_concept": "cocoa butter",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "DEXTROSE",
+        "cleaned_term": "dextrose",
+        "normalized_term": "dextrose",
+        "canonical_concept": "dextrose",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "SOY LECITHIN",
+        "cleaned_term": "soy lecithin",
+        "normalized_term": "soy lecithin",
+        "canonical_concept": "soy",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": "SOY",
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "MILK",
+        "cleaned_term": "milk",
+        "normalized_term": "milk",
+        "canonical_concept": "milk",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": "MILK",
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "SUGAR",
+        "cleaned_term": "sugar",
+        "normalized_term": "sugar",
+        "canonical_concept": "sugar",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "SOYBEAN OIL",
+        "cleaned_term": "soybean oil",
+        "normalized_term": "soybean oil",
+        "canonical_concept": "soy",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": "SOY",
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "PARTIALLY HYDROGENATED COTTONSEED OIL",
+        "cleaned_term": "partially hydrogenated cottonseed oil",
+        "normalized_term": "partially hydrogenated cottonseed oil",
+        "canonical_concept": "partially hydrogenated cottonseed oil",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "HIGH FRUCTOSE CORN SYRUP",
+        "cleaned_term": "high fructose corn syrup",
+        "normalized_term": "high fructose corn syrup",
+        "canonical_concept": "high fructose corn syrup",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "SALT",
+        "cleaned_term": "salt",
+        "normalized_term": "salt",
+        "canonical_concept": "salt",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "BAKING SODA",
+        "cleaned_term": "baking soda",
+        "normalized_term": "baking soda",
+        "canonical_concept": "baking soda",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "NATURAL AND ARTIFICIAL FLAVOR",
+        "cleaned_term": "natural and artificial flavor",
+        "normalized_term": "natural and artificial flavor",
+        "canonical_concept": "natural and artificial flavor",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "CARAMEL COLOR",
+        "cleaned_term": "caramel color",
+        "normalized_term": "caramel color",
+        "canonical_concept": "caramel color",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      }
+    ],
+    "allergen_evidence": [
+      {
+        "allergen": "WHEAT",
+        "ingredient": "enriched flour",
+        "canonical_concept": "wheat",
+        "evidence_type": "NORMALIZED_INGREDIENT",
+        "source": "ingredient_list",
+        "confidence": 1.0,
+        "provenance": "curated_dictionary",
+        "supporting_text": "UNBLEACHED ENRICHED FLOUR",
+        "status": "strong"
+      },
+      {
+        "allergen": "WHEAT",
+        "ingredient": "wheat flour",
+        "canonical_concept": "wheat",
+        "evidence_type": "NESTED_INGREDIENT",
+        "source": "ingredient_list",
+        "confidence": 1.0,
+        "provenance": "curated_dictionary",
+        "supporting_text": "WHEAT FLOUR",
+        "status": "strong"
+      },
+      {
+        "allergen": "SOY",
+        "ingredient": "soy lecithin",
+        "canonical_concept": "soy",
+        "evidence_type": "NESTED_INGREDIENT",
+        "source": "ingredient_list",
+        "confidence": 1.0,
+        "provenance": "curated_dictionary",
+        "supporting_text": "SOY LECITHIN",
+        "status": "strong"
+      },
+      {
+        "allergen": "MILK",
+        "ingredient": "milk",
+        "canonical_concept": "milk",
+        "evidence_type": "NESTED_INGREDIENT",
+        "source": "ingredient_list",
+        "confidence": 1.0,
+        "provenance": "curated_dictionary",
+        "supporting_text": "MILK",
+        "status": "strong"
+      },
+      {
+        "allergen": "SOY",
+        "ingredient": "soybean oil",
+        "canonical_concept": "soy",
+        "evidence_type": "NORMALIZED_INGREDIENT",
+        "source": "ingredient_list",
+        "confidence": 1.0,
+        "provenance": "curated_dictionary",
+        "supporting_text": "SOYBEAN OIL",
+        "status": "strong"
+      }
+    ],
+    "allergen_assessments": [
+      {
+        "allergen": "MILK",
+        "status": "DETECTED",
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "allergen": "MILK",
+            "ingredient": "milk",
+            "canonical_concept": "milk",
+            "evidence_type": "NESTED_INGREDIENT",
+            "source": "ingredient_list",
+            "confidence": 1.0,
+            "provenance": "curated_dictionary",
+            "supporting_text": "MILK",
+            "status": "strong"
+          }
+        ],
+        "explanation": "Strong explicit allergen evidence found."
+      },
+      {
+        "allergen": "SOY",
+        "status": "DETECTED",
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "allergen": "SOY",
+            "ingredient": "soy lecithin",
+            "canonical_concept": "soy",
+            "evidence_type": "NESTED_INGREDIENT",
+            "source": "ingredient_list",
+            "confidence": 1.0,
+            "provenance": "curated_dictionary",
+            "supporting_text": "SOY LECITHIN",
+            "status": "strong"
+          },
+          {
+            "allergen": "SOY",
+            "ingredient": "soybean oil",
+            "canonical_concept": "soy",
+            "evidence_type": "NORMALIZED_INGREDIENT",
+            "source": "ingredient_list",
+            "confidence": 1.0,
+            "provenance": "curated_dictionary",
+            "supporting_text": "SOYBEAN OIL",
+            "status": "strong"
+          }
+        ],
+        "explanation": "Strong explicit allergen evidence found."
+      },
+      {
+        "allergen": "WHEAT",
+        "status": "DETECTED",
+        "confidence": 1.0,
+        "evidence": [
+          {
+            "allergen": "WHEAT",
+            "ingredient": "enriched flour",
+            "canonical_concept": "wheat",
+            "evidence_type": "NORMALIZED_INGREDIENT",
+            "source": "ingredient_list",
+            "confidence": 1.0,
+            "provenance": "curated_dictionary",
+            "supporting_text": "UNBLEACHED ENRICHED FLOUR",
+            "status": "strong"
+          },
+          {
+            "allergen": "WHEAT",
+            "ingredient": "wheat flour",
+            "canonical_concept": "wheat",
+            "evidence_type": "NESTED_INGREDIENT",
+            "source": "ingredient_list",
+            "confidence": 1.0,
+            "provenance": "curated_dictionary",
+            "supporting_text": "WHEAT FLOUR",
+            "status": "strong"
+          }
+        ],
+        "explanation": "Strong explicit allergen evidence found."
+      }
+    ],
+    "personalized_risk": {
+      "overall_risk": "HIGH",
+      "matched_allergens": [
+        "WHEAT",
+        "SOY",
+        "MILK"
+      ],
+      "allergen_results": [
+        {
+          "allergen": "WHEAT",
+          "risk_level": "HIGH",
+          "assessment_status": "DETECTED",
+          "reason": "Wheat is associated with the user's allergy profile and was detected from available ingredient evidence.",
+          "supporting_ingredients": [
+            "enriched flour",
+            "wheat flour"
+          ],
+          "evidence_types": [
+            "NORMALIZED_INGREDIENT",
+            "NESTED_INGREDIENT"
+          ],
+          "confidence": 1.0,
+          "provenance": [
+            "curated_dictionary"
+          ],
+          "sources": [
+            "ingredient_list"
+          ],
+          "unresolved_text": [],
+          "conflict_note": null
+        },
+        {
+          "allergen": "SOY",
+          "risk_level": "HIGH",
+          "assessment_status": "DETECTED",
+          "reason": "Soy is associated with the user's allergy profile and was detected from available ingredient evidence.",
+          "supporting_ingredients": [
+            "soy lecithin",
+            "soybean oil"
+          ],
+          "evidence_types": [
+            "NESTED_INGREDIENT",
+            "NORMALIZED_INGREDIENT"
+          ],
+          "confidence": 1.0,
+          "provenance": [
+            "curated_dictionary"
+          ],
+          "sources": [
+            "ingredient_list"
+          ],
+          "unresolved_text": [],
+          "conflict_note": null
+        },
+        {
+          "allergen": "MILK",
+          "risk_level": "HIGH",
+          "assessment_status": "DETECTED",
+          "reason": "Milk is associated with the user's allergy profile and was detected from available ingredient evidence.",
+          "supporting_ingredients": [
+            "milk"
+          ],
+          "evidence_types": [
+            "NESTED_INGREDIENT"
+          ],
+          "confidence": 1.0,
+          "provenance": [
+            "curated_dictionary"
+          ],
+          "sources": [
+            "ingredient_list"
+          ],
+          "unresolved_text": [],
+          "conflict_note": null
+        }
+      ],
+      "explanation": "Personalized deterministic assessment based on the supplied profile and available allergen evidence; it is not medical advice.",
+      "warnings": [
+        "Potentially relevant allergen detected for this user. Manual verification is recommended."
+      ],
+      "unresolved_evidence": []
+    }
+  },
+  {
+    "image": "random.jpg",
+    "ground_truth": {
+      "allergens": [],
+      "annotation_status": "VERIFIED",
+      "annotation_source": "Ingredient list manually inspected"
+    },
+    "ocr_text": "POTATOES,SUNFLOWERAND/ OR SAFFLOWER AND/ OR CANOLA OIL, RICE FLOUR, SEA SALT,BLACK PEPPER, JALAPENO PEPPER POWDER, CITRIC ACID (ACIDULANT), NATURAL FLAVOR,GARLIC POWDER,ONION SUNFLOWER OIL. DIST. & SOLD EXCLUSIVELY BY: TRADER JOE'S, MONROVIA, CA 91016 STORE IN A COOL, DRY PLACE SKU# 91750-89326",
+    "ingredients": [
+      "POTATOES",
+      "SUNFLOWER OIL",
+      "SAFFLOWER OIL",
+      "CANOLA OIL",
+      "RICE FLOUR",
+      "SEA SALT",
+      "BLACK PEPPER",
+      "JALAPENO PEPPER POWDER",
+      "CITRIC ACID",
+      "ACIDULANT",
+      "NATURAL FLAVOR",
+      "GARLIC POWDER",
+      "ONION SUNFLOWER OIL"
+    ],
+    "normalized": [
+      {
+        "raw_term": "POTATOES",
+        "cleaned_term": "potatoes",
+        "normalized_term": "potatoes",
+        "canonical_concept": "potato",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "SUNFLOWER OIL",
+        "cleaned_term": "sunflower oil",
+        "normalized_term": "sunflower oil",
+        "canonical_concept": "sunflower oil",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "SAFFLOWER OIL",
+        "cleaned_term": "safflower oil",
+        "normalized_term": "safflower oil",
+        "canonical_concept": "safflower oil",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "CANOLA OIL",
+        "cleaned_term": "canola oil",
+        "normalized_term": "canola oil",
+        "canonical_concept": "canola oil",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "RICE FLOUR",
+        "cleaned_term": "rice flour",
+        "normalized_term": "rice flour",
+        "canonical_concept": "rice flour",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "SEA SALT",
+        "cleaned_term": "sea salt",
+        "normalized_term": "sea salt",
+        "canonical_concept": "salt",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "BLACK PEPPER",
+        "cleaned_term": "black pepper",
+        "normalized_term": "black pepper",
+        "canonical_concept": "black pepper",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "JALAPENO PEPPER POWDER",
+        "cleaned_term": "jalapeno pepper powder",
+        "normalized_term": "jalapeno pepper powder",
+        "canonical_concept": "jalapeno pepper powder",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "CITRIC ACID",
+        "cleaned_term": "citric acid",
+        "normalized_term": "citric acid",
+        "canonical_concept": "citric acid",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "ACIDULANT",
+        "cleaned_term": "acidulant",
+        "normalized_term": "acidulant",
+        "canonical_concept": "acidulant",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "NATURAL FLAVOR",
+        "cleaned_term": "natural flavor",
+        "normalized_term": "natural flavor",
+        "canonical_concept": "natural flavor",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "GARLIC POWDER",
+        "cleaned_term": "garlic powder",
+        "normalized_term": "garlic powder",
+        "canonical_concept": "garlic powder",
+        "match_type": "curated_exact",
+        "confidence": 1.0,
+        "status": "known",
+        "allergen": null,
+        "candidate_matches": null,
+        "provenance": "curated_dictionary",
+        "unresolved_text": null
+      },
+      {
+        "raw_term": "ONION SUNFLOWER OIL",
+        "cleaned_term": "onion sunflower oil",
+        "normalized_term": null,
+        "canonical_concept": null,
+        "match_type": "partial_match",
+        "confidence": 1.0,
+        "status": "ambiguous",
+        "allergen": null,
+        "candidate_matches": [
+          {
+            "candidate": "sunflower oil",
+            "similarity": 1.0,
+            "match_method": "candidate_segmentation",
+            "frequency": null,
+            "confidence": 1.0,
+            "allergen": null,
+            "canonical_concept": "sunflower oil"
+          }
+        ],
+        "provenance": "candidate_segmentation",
+        "unresolved_text": "ONION SUNFLOWER OIL"
+      }
+    ],
+    "allergen_evidence": [],
+    "allergen_assessments": [
+      {
+        "allergen": "MILK",
+        "status": "NOT_DETECTED",
+        "confidence": 0.0,
+        "evidence": [],
+        "explanation": "No known allergen detected from available ingredient evidence."
+      },
+      {
+        "allergen": "SOY",
+        "status": "NOT_DETECTED",
+        "confidence": 0.0,
+        "evidence": [],
+        "explanation": "No known allergen detected from available ingredient evidence."
+      },
+      {
+        "allergen": "WHEAT",
+        "status": "NOT_DETECTED",
+        "confidence": 0.0,
+        "evidence": [],
+        "explanation": "No known allergen detected from available ingredient evidence."
+      }
+    ],
+    "personalized_risk": {
+      "overall_risk": "LOW",
+      "matched_allergens": [],
+      "allergen_results": [
+        {
+          "allergen": "WHEAT",
+          "risk_level": "LOW",
+          "assessment_status": "NOT_DETECTED",
+          "reason": "No known wheat allergen was detected from available evidence.",
+          "supporting_ingredients": [],
+          "evidence_types": [],
+          "confidence": 0.0,
+          "provenance": [],
+          "sources": [],
+          "unresolved_text": [],
+          "conflict_note": null
+        },
+        {
+          "allergen": "SOY",
+          "risk_level": "LOW",
+          "assessment_status": "NOT_DETECTED",
+          "reason": "No known soy allergen was detected from available evidence.",
+          "supporting_ingredients": [],
+          "evidence_types": [],
+          "confidence": 0.0,
+          "provenance": [],
+          "sources": [],
+          "unresolved_text": [],
+          "conflict_note": null
+        },
+        {
+          "allergen": "MILK",
+          "risk_level": "LOW",
+          "assessment_status": "NOT_DETECTED",
+          "reason": "No known milk allergen was detected from available evidence.",
+          "supporting_ingredients": [],
+          "evidence_types": [],
+          "confidence": 0.0,
+          "provenance": [],
+          "sources": [],
+          "unresolved_text": [],
+          "conflict_note": null
+        }
+      ],
+      "explanation": "Personalized deterministic assessment based on the supplied profile and available allergen evidence; it is not medical advice.",
+      "warnings": [
+        "No known allergen detected from available evidence."
+      ],
+      "unresolved_evidence": []
+    }
+  }
+]

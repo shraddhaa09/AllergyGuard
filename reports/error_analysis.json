@@ -1,0 +1,148 @@
+{
+  "report_metadata": {
+    "title": "AllergyGuard Error Analysis Report",
+    "evaluation_type": "post-OCR error and uncertainty analysis",
+    "verified_samples": [
+      "food_ingredients.webp",
+      "random.jpg"
+    ],
+    "uncertain_samples": [
+      "oreo.jpg"
+    ],
+    "excluded_samples": [
+      "restaurant.jpg",
+      "test_image.jpg"
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "CASE_1_SOY_LEOTAIN",
+      "input": "SOY LEOTAIN",
+      "intended_concept": "SOY LECITHIN",
+      "category": "OCR spelling corruption / Fuzzy-match uncertainty",
+      "status": "OBSERVED",
+      "raw_evidence": "OCR term 'SOY LEOTAIN' matched dataset candidate 'soy lecithin' with confidence 0.7774.",
+      "system_behavior": "Normalized term='soy lecithin' with match_type='dataset_candidate', confidence=0.7774, status='candidate'. Evidence fusion assigned evidence_type='FUZZY_NORMALIZATION' (status='weak') resulting in AllergenAssessment status='POTENTIAL'.",
+      "interpretation": "The system correctly refrained from treating the corrupted term as a confirmed exact match. Because status='candidate' (confidence < 0.95), the evidence fusion layer produces status='POTENTIAL' rather than 'DETECTED'. Under strict exact-detection metrics, this term is not automatically accepted as positive, preventing false-positive allergen detection from corrupted text.",
+      "limitation": "Corrupted OCR spelling cannot be resolved with 100% confidence without human review or secondary OCR verification."
+    },
+    {
+      "case_id": "CASE_2_ONION_SUNFLOWER_OIL",
+      "input": "ONION SUNFLOWER OIL",
+      "intended_concept": "ONION, SUNFLOWER OIL (concatenated/merged ingredient string)",
+      "category": "Ambiguous ingredient / Partial normalization",
+      "status": "OBSERVED",
+      "raw_evidence": "Unseparated OCR token string 'ONION SUNFLOWER OIL' evaluated by candidate segmenter.",
+      "system_behavior": "Candidate segmentation recognized segment 'sunflower oil' (similarity=1.0) while preserving unresolved_text='ONION SUNFLOWER OIL'. Status='ambiguous', match_type='partial_match'. No allergen mapping was invented for 'onion'.",
+      "interpretation": "The system correctly recognized 'sunflower oil' as a partial segment while marking the overall term as ambiguous. It conservatively avoided hallucinating a synthetic canonical ingredient mapping for 'onion'. Furthermore, sunflower oil is not mapped to any allergen in the curated allergy knowledge base.",
+      "limitation": "OCR token concatenation (missing comma separator) creates unsegmented text fragments that require candidate segmentation."
+    },
+    {
+      "case_id": "CASE_3_CONTAINS_STATEMENT",
+      "input": "CONTAINS: WHEAT, SOY, MILK",
+      "sample": "food_ingredients.webp",
+      "category": "Explicit label allergen claim",
+      "status": "OBSERVED",
+      "raw_evidence": "OCR label text contained explicit statement 'CONTAINS: WHEAT, SOY, MILK'.",
+      "system_behavior": "Extracted 3 AllergenEvidence items with evidence_type='CONTAINS_STATEMENT', source='label_contains_statement', confidence=1.0, status='strong'. Fusion assigned status='DETECTED' for MILK, SOY, WHEAT.",
+      "interpretation": "Direct CONTAINS statements on package labels represent explicit manufacturer allergen disclosures. The evidence-fusion layer assigns them maximum confidence (1.0) and status='strong', ensuring they receive higher precedence than uncertain fuzzy ingredient matches.",
+      "limitation": "Relies on OCR accurately capturing label CONTAINS text regions."
+    },
+    {
+      "case_id": "CASE_4_SOYBEAN_OIL",
+      "input": "SOYBEAN OIL",
+      "category": "Curated allergen knowledge mapping",
+      "status": "OBSERVED",
+      "raw_evidence": "Term 'SOYBEAN OIL' in ingredient list.",
+      "system_behavior": "Normalized to canonical_concept='soy', allergen='SOY' via match_type='curated_exact', status='known', confidence=1.0. Evidence status='strong' led to AllergenAssessment status='DETECTED'.",
+      "interpretation": "Curated allergy knowledge explicitly maps 'soybean oil' to the SOY allergen canonical concept. This mapping is deterministic and traceable back to the curated allergen dictionary, generating strong evidence.",
+      "limitation": "Deterministic knowledge mapping requires curated dictionary coverage for all major allergen derivatives."
+    },
+    {
+      "case_id": "CASE_5_NESTED_MILK",
+      "input": "SEMISWEET CHOCOLATE CHIPS (... MILK)",
+      "nested_ingredient": "MILK",
+      "category": "Hierarchical ingredient extraction & evidence fusion",
+      "status": "OBSERVED",
+      "raw_evidence": "Sub-ingredient 'MILK' inside parenthetical structure of 'SEMISWEET CHOCOLATE CHIPS'.",
+      "system_behavior": "Hierarchical extractor identified nested level='nested', parent='SEMISWEET CHOCOLATE CHIPS'. Evidence fusion assigned evidence_type='NESTED_INGREDIENT' with status='strong', yielding AllergenAssessment MILK status='DETECTED'.",
+      "interpretation": "Hierarchical ingredient extraction preserves parent-child relationships and prevents nested terms from being lost. Evidence fusion treats valid nested allergen terms as strong evidence for allergen detection.",
+      "limitation": "Requires well-formed parenthetical or bracketed ingredient list structures in OCR text."
+    },
+    {
+      "case_id": "CASE_6_OREO_UNCERTAIN",
+      "input": "oreo.jpg",
+      "category": "Ground-truth & OCR uncertainty",
+      "status": "OBSERVED",
+      "raw_evidence": "Image oreo.jpg has PaddleOCR average confidence = 0.5954 and UNCERTAIN ground truth annotation.",
+      "system_behavior": "Excluded from quantitative metrics calculation in evaluation set loader (get_verified_samples).",
+      "interpretation": "Low OCR confidence (0.5954) reflects poor image legibility (blurry photograph). Crucially, low OCR confidence indicates quality degradation rather than proof of OCR error or accuracy. The sample is appropriately held out as UNCERTAIN until manual inspection or higher-quality re-imaging is available.",
+      "limitation": "Blurry or poorly illuminated photographs degrade OCR text extraction quality, requiring manual verification."
+    }
+  ],
+  "error_categories": [
+    {
+      "category": "OCR error",
+      "status": "OBSERVED",
+      "evidence": "Observed in food_ingredients.webp ('CHOCOLAT\u00c9' character glitch) and oreo.jpg (low OCR confidence 0.5954 with garbled text)."
+    },
+    {
+      "category": "Ingredient extraction error",
+      "status": "OBSERVED",
+      "evidence": "Observed in random.jpg where 'ONION SUNFLOWER OIL' was merged without a comma in the raw OCR stream."
+    },
+    {
+      "category": "OCR spacing error",
+      "status": "OBSERVED",
+      "evidence": "Observed in random.jpg ('SUNFLOWERAND/ OR' missing space; missing space after commas in list items)."
+    },
+    {
+      "category": "Normalization exact-match failure",
+      "status": "NOT_OBSERVED_IN_CURRENT_SAMPLES",
+      "evidence": "All valid, non-corrupted ingredient terms in verified samples matched curated or dataset index entries exactly."
+    },
+    {
+      "category": "Fuzzy-match uncertainty",
+      "status": "OBSERVED",
+      "evidence": "Demonstrated by corrupted typo variant 'SOY LEOTAIN' matching 'soy lecithin' at candidate status (confidence 0.7774)."
+    },
+    {
+      "category": "Ambiguous ingredient",
+      "status": "OBSERVED",
+      "evidence": "Observed in 'ONION SUNFLOWER OIL' yielding candidate segmentation partial match with ambiguous status."
+    },
+    {
+      "category": "Unknown ingredient",
+      "status": "NOT_OBSERVED_IN_CURRENT_SAMPLES",
+      "evidence": "No valid ingredient in the verified sample set was left completely unmapped or unknown."
+    },
+    {
+      "category": "Allergen knowledge gap",
+      "status": "NOT_OBSERVED_IN_CURRENT_SAMPLES",
+      "evidence": "Curated allergen dictionary cleanly covered all present target allergens (WHEAT, SOY, MILK)."
+    },
+    {
+      "category": "Evidence conflict",
+      "status": "NOT_OBSERVED_IN_CURRENT_SAMPLES",
+      "evidence": "No contradictory label statements (e.g. CONTAINS vs ingredient list) were present in the verified dataset."
+    },
+    {
+      "category": "Ground-truth ambiguity",
+      "status": "OBSERVED",
+      "evidence": "Observed in oreo.jpg, where photograph blurriness prevented reliable human manual ground-truth annotation."
+    }
+  ],
+  "system_limitations": [
+    "Post-OCR processing quality depends heavily on clean OCR input text; OCR typos degrade fuzzy matching confidence.",
+    "Candidate fuzzy matches below high-confidence thresholds (0.95) are marked as POTENTIAL and require manual verification.",
+    "Unsegmented OCR token strings (e.g. missing commas) rely on candidate segmentation and partial matching.",
+    "Blurry or poorly illuminated label photographs (e.g. oreo.jpg) degrade OCR confidence and prevent reliable manual annotation.",
+    "System predictions are deterministic matching outputs, not medical risk scores, diagnoses, or safety guarantees."
+  ],
+  "future_work_implications": [
+    "Expand curated allergen and ingredient dictionaries to reduce dependence on candidate fuzzy matching.",
+    "Incorporate image quality pre-filtering to automatically flag blurry photographs prior to OCR processing.",
+    "Enhance OCR post-processing heuristics to handle missing whitespace and missing comma separators.",
+    "Gather a larger, multi-label verified benchmark dataset to enable statistically rigorous evaluation metrics."
+  ]
+}

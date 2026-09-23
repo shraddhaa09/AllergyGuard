@@ -1,0 +1,246 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #1f2937;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 24px 40px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.header p {
+  margin: 6px 0 0;
+  color: #6b7280;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+  border: 1px solid #e5e7eb;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.description {
+  color: #6b7280;
+}
+
+.upload-box {
+  margin-top: 20px;
+  padding: 30px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.file-name {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.allergy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.allergy-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.allergy-item:hover {
+  background: #f9fafb;
+}
+
+.allergy-item input {
+  width: 18px;
+  height: 18px;
+}
+
+.analyze-button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #111827;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.analyze-button:hover {
+  background: #374151;
+}
+
+@media (max-width: 600px) {
+  .allergy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    padding: 20px;
+  }
+}
+
+/* ==========================================
+   ERROR
+========================================== */
+
+.error-box {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   DISABLED BUTTON
+========================================== */
+
+.analyze-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* ==========================================
+   RESULTS
+========================================== */
+
+.results-section {
+  margin-top: 40px;
+}
+
+.results-section h2 {
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+
+/* ==========================================
+   RISK
+========================================== */
+
+.risk-box {
+  margin-top: 15px;
+  padding: 18px;
+  border-radius: 10px;
+  background: #f3f4f6;
+}
+
+.risk-box strong {
+  font-size: 22px;
+}
+
+
+/* ==========================================
+   ALLERGEN RESULT
+========================================== */
+
+.allergen-result {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 18px;
+  margin-top: 15px;
+}
+
+.allergen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.allergen-header strong {
+  font-size: 18px;
+}
+
+.allergen-header span {
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #f3f4f6;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+
+/* ==========================================
+   EVIDENCE
+========================================== */
+
+.evidence {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.evidence-item {
+  margin-top: 12px;
+  padding: 12px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.evidence-item p {
+  margin: 5px 0;
+}
+
+
+/* ==========================================
+   INGREDIENTS
+========================================== */
+
+.ingredients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.ingredient-tag {
+  padding: 7px 10px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  font-size: 14px;
+}

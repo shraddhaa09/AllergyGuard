@@ -62,8 +62,56 @@ def test_nested_parentheses_are_extracted_without_overcleaning():
 
 
 def test_unknown_ingredient_remains_unknown():
-    result = normalize_ingredient("VEGETABLE OIL")
+    result = normalize_ingredient("MYSTERY INGREDIENT QZX")
 
     assert result.status == "unknown"
     assert result.normalized_term is None
     assert result.canonical_concept is None
+
+def test_pre_extracted_ingredient_text_without_heading():
+    text = "MILK, SUGAR, WHEAT FLOUR, SOY LECITHIN"
+
+    items = hierarchical_extract_ingredients(text)
+
+    values = [item.cleaned_text for item in items]
+
+    assert "MILK" in values
+    assert "SUGAR" in values
+    assert "WHEAT FLOUR" in values
+    assert "SOY LECITHIN" in values
+
+
+def test_contains_only_text_is_not_treated_as_ingredients():
+    text = "CONTAINS: WHEAT, MILK"
+
+    items = hierarchical_extract_ingredients(text)
+
+    assert items == []
+
+def test_ocr_spacing_is_cleaned():
+    text = "UNBLEACHED ENRICHED FLOUR, SEMISWEET CHOCOLATE CHIPS, SOY LECITHIN"
+
+    items = hierarchical_extract_ingredients(text)
+
+    values = [item.cleaned_text for item in items]
+
+    assert "UNBLEACHED ENRICHED FLOUR" in values
+    assert "SEMISWEET CHOCOLATE CHIPS" in values
+    assert "SOY LECITHIN" in values
+
+
+def test_packaging_metadata_is_not_treated_as_ingredient():
+    text = (
+        "POTATOES, SUNFLOWER OIL, RICE FLOUR, SEA SALT, "
+        "DIST. & SOLD EXCLUSIVELY BY: TRADER JOE'S, "
+        "MONROVIA, CA 91016, STORE IN A COOL, DRY PLACE, SKU# 91750-89326"
+    )
+
+    items = hierarchical_extract_ingredients(text)
+
+    values = [item.cleaned_text for item in items]
+
+    assert "POTATOES" in values
+    assert "RICE FLOUR" in values
+    assert not any("TRADER JOE" in value for value in values)
+    assert not any("SKU" in value for value in values)

@@ -1,0 +1,49 @@
+Type of res: <class 'list'>
+Len of res: 1
+Type of res[0]: <class 'paddlex.inference.pipelines.ocr.result.OCRResult'>
+Len of res[0]: 15
+--- Item 0 ---
+Type: <class 'str'>
+Content: 'input_path'
+--- Item 1 ---
+Type: <class 'str'>
+Content: 'page_index'
+--- Item 2 ---
+Type: <class 'str'>
+Content: 'doc_preprocessor_res'
+--- Item 3 ---
+Type: <class 'str'>
+Content: 'dt_polys'
+--- Item 4 ---
+Type: <class 'str'>
+Content: 'model_settings'
+--- Item 5 ---
+Type: <class 'str'>
+Content: 'text_det_params'
+--- Item 6 ---
+Type: <class 'str'>
+Content: 'text_type'
+--- Item 7 ---
+Type: <class 'str'>
+Content: 'text_rec_score_thresh'
+--- Item 8 ---
+Type: <class 'str'>
+Content: 'return_word_box'
+--- Item 9 ---
+Type: <class 'str'>
+Content: 'rec_texts'
+--- Item 10 ---
+Type: <class 'str'>
+Content: 'rec_scores'
+--- Item 11 ---
+Type: <class 'str'>
+Content: 'rec_polys'
+--- Item 12 ---
+Type: <class 'str'>
+Content: 'vis_fonts'
+--- Item 13 ---
+Type: <class 'str'>
+Content: 'textline_orientation_angles'
+--- Item 14 ---
+Type: <class 'str'>
+Content: 'rec_boxes'

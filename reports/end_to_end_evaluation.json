@@ -1,0 +1,194 @@
+{
+  "evaluation_scope": {
+    "description": "post-OCR end-to-end pipeline evaluation",
+    "verified_samples": [
+      "food_ingredients.webp",
+      "random.jpg"
+    ],
+    "uncertain_samples": [
+      "oreo.jpg"
+    ],
+    "excluded_samples": [
+      "restaurant.jpg",
+      "test_image.jpg"
+    ],
+    "allergens": [
+      "WHEAT",
+      "SOY",
+      "MILK"
+    ]
+  },
+  "current_pipeline": {
+    "per_allergen": {
+      "WHEAT": {
+        "tp": 1,
+        "tn": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "SOY": {
+        "tp": 1,
+        "tn": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "MILK": {
+        "tp": 1,
+        "tn": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      }
+    },
+    "overall": {
+      "tp": 3,
+      "tn": 3,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 3
+    }
+  },
+  "baseline": {
+    "per_allergen": {
+      "WHEAT": {
+        "tp": 1,
+        "tn": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "SOY": {
+        "tp": 1,
+        "tn": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "MILK": {
+        "tp": 1,
+        "tn": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      }
+    },
+    "overall": {
+      "tp": 3,
+      "tn": 3,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 3
+    }
+  },
+  "comparison": {
+    "description": "small verified evaluation-set comparison",
+    "verified_sample_count": 2,
+    "total_evaluations": 6,
+    "per_image_evaluations": [
+      {
+        "image": "food_ingredients.webp",
+        "allergen": "WHEAT",
+        "ground_truth": "PRESENT",
+        "ground_truth_allergens": [
+          "WHEAT",
+          "SOY",
+          "MILK"
+        ],
+        "baseline_status": "CONFIRMED",
+        "baseline_positive": true,
+        "current_status": "DETECTED",
+        "current_positive": true
+      },
+      {
+        "image": "food_ingredients.webp",
+        "allergen": "SOY",
+        "ground_truth": "PRESENT",
+        "ground_truth_allergens": [
+          "WHEAT",
+          "SOY",
+          "MILK"
+        ],
+        "baseline_status": "CONFIRMED",
+        "baseline_positive": true,
+        "current_status": "DETECTED",
+        "current_positive": true
+      },
+      {
+        "image": "food_ingredients.webp",
+        "allergen": "MILK",
+        "ground_truth": "PRESENT",
+        "ground_truth_allergens": [
+          "WHEAT",
+          "SOY",
+          "MILK"
+        ],
+        "baseline_status": "CONFIRMED",
+        "baseline_positive": true,
+        "current_status": "DETECTED",
+        "current_positive": true
+      },
+      {
+        "image": "random.jpg",
+        "allergen": "WHEAT",
+        "ground_truth": "ABSENT",
+        "ground_truth_allergens": [],
+        "baseline_status": "NOT_DETECTED",
+        "baseline_positive": false,
+        "current_status": "NOT_DETECTED",
+        "current_positive": false
+      },
+      {
+        "image": "random.jpg",
+        "allergen": "SOY",
+        "ground_truth": "ABSENT",
+        "ground_truth_allergens": [],
+        "baseline_status": "NOT_DETECTED",
+        "baseline_positive": false,
+        "current_status": "NOT_DETECTED",
+        "current_positive": false
+      },
+      {
+        "image": "random.jpg",
+        "allergen": "MILK",
+        "ground_truth": "ABSENT",
+        "ground_truth_allergens": [],
+        "baseline_status": "NOT_DETECTED",
+        "baseline_positive": false,
+        "current_status": "NOT_DETECTED",
+        "current_positive": false
+      }
+    ]
+  },
+  "limitations": [
+    "These metrics are based on only 2 verified images and should not be interpreted as general model accuracy.",
+    "The evaluation measures post-OCR pipeline processing using stored baseline OCR text, not fresh image-to-allergen accuracy.",
+    "Uncertain sample (oreo.jpg) and excluded non-packaged/blurry images were excluded from quantitative metrics.",
+    "Small evaluation set prevents statistically significant conclusions regarding generalization."
+  ]
+}
