@@ -161,56 +161,278 @@ async def analyze_image(file: UploadFile = File(...),
         # ------------------------------------------
         # Allergen results
         # ------------------------------------------
+        #
+        # IMPORTANT:
+        # The internal pipeline may assess the complete
+        # allergen ontology.
+        #
+        # The API must return ONLY the allergens selected
+        # by the current user.
+        #
+        # Example:
+        #   Image contains MILK + SOY + WHEAT
+        #   User selected PEANUT
+        #
+        # API must return:
+        #   PEANUT -> NOT_DETECTED
+        #
+        # It must NOT return MILK/SOY/WHEAT as user results,
+        # because those are not part of this user's profile.
+        
+        # ------------------------------------------
+        # Allergen results
+        # ------------------------------------------
+        #
+        # IMPORTANT:
+        # Return results ONLY for allergens selected
+        # by the current user.
+        #
+        # If the selected allergen has no evidence:
+        #   - with usable ingredient text -> NOT_DETECTED
+        #   - without usable ingredient text -> INSUFFICIENT_EVIDENCE
+        # ------------------------------------------
+
+        selected_allergen_set = {
+            allergen.upper()
+            for allergen in allergy_list
+        }
+
+        # First index the assessments produced by the pipeline
+        assessment_map = {
+            assessment.allergen.upper(): assessment
+            for assessment in allergen_assessments
+        }
 
         allergen_results = []
 
-        for assessment in allergen_assessments:
+        for selected_allergen in selected_allergen_set:
 
-            # Find evidence belonging to this allergen
-            supporting_evidence = []
+            # ------------------------------------------
+            # Case 1: Pipeline already produced an
+            # assessment for this allergen
+            # ------------------------------------------
 
-            for evidence in allergen_evidence:
-                if evidence.allergen == assessment.allergen:
-                    supporting_evidence.append(
-                        {
-                            "type": evidence.evidence_type,
-                            "ingredient": evidence.ingredient,
-                            "text": evidence.supporting_text,
-                            "confidence": round(evidence.confidence, 4),
-                        }
-                    )
+            assessment = assessment_map.get(selected_allergen)
 
-            allergen_results.append(
+            if assessment is not None:
+
+                supporting_evidence = []
+
+                for evidence in allergen_evidence:
+                    if evidence.allergen.upper() == selected_allergen:
+                        supporting_evidence.append(
+                            {
+                                "type": evidence.evidence_type,
+                                "ingredient": evidence.ingredient,
+                                "text": evidence.supporting_text,
+                                "confidence": round(evidence.confidence, 4),
+                            }
+                        )
+
+                allergen_results.append(
+                    {
+                        "allergen": assessment.allergen,
+                        "status": assessment.status,
+                        "confidence": round(assessment.confidence, 4),
+                        "explanation": assessment.explanation,
+                        "evidence": supporting_evidence,
+                    }
+                )
+
+                continue
+
+            # ------------------------------------------
+            # Case 2: Selected allergen was NOT found
+            # in the pipeline assessments
+            #
+            # If we have usable ingredient information,
+            # we can say NOT_DETECTED.
+            #
+            # Otherwise we cannot determine it.
+            # ------------------------------------------
+
+            if ingredients:
+
+                allergen_results.append(
+                    {
+                        "allergen": selected_allergen,
+                        "status": "NOT_DETECTED",
+                        "confidence": 1.0,
+                        "explanation": (
+                            f"{selected_allergen} was not found in the "
+                            "available ingredient evidence."
+                        ),
+                        "evidence": [],
+                    }
+                )
+
+            else:
+
+                allergen_results.append(
+                    {
+                        "allergen": selected_allergen,
+                        "status": "INSUFFICIENT_EVIDENCE",
+                        "confidence": 0.0,
+                        "explanation": (
+                            f"There is insufficient ingredient evidence "
+                            f"to determine whether {selected_allergen} is present."
+                        ),
+                        "evidence": [],
+                    }
+                )
+
+        # ------------------------------------------
+        # Personalized risk result
+        # ------------------------------------------
+        #
+        # IMPORTANT:
+        # Risk must be based ONLY on the allergens
+        # selected by the current user.
+        #
+        # We should NOT use product_risk here because
+        # product_risk is based on the broader product
+        # allergen assessment.
+        # ------------------------------------------
+
+        risk_allergens = []
+
+        for result in allergen_results:
+
+            status = str(result["status"]).upper()
+
+            if status == "DETECTED":
+
+                risk_level = "ALLERGEN_FOUND"
+
+                reason = (
+                    f"{result['allergen']} was detected in the "
+                    "available allergen evidence."
+                )
+
+            elif status == "POTENTIAL":
+
+                risk_level = "POSSIBLE_ALLERGEN"
+
+                reason = (
+                    f"There is potential evidence for "
+                    f"{result['allergen']} in the available evidence."
+                )
+
+            elif status == "NOT_DETECTED":
+
+                risk_level = "NO_MATCH"
+
+                reason = (
+                    f"{result['allergen']} was not found in the "
+                    "available ingredient evidence."
+                )
+
+            else:
+
+                risk_level = "INSUFFICIENT_EVIDENCE"
+
+                reason = (
+                    f"There is insufficient evidence to determine "
+                    f"whether {result['allergen']} is present."
+                )
+
+            risk_allergens.append(
                 {
-                    "allergen": assessment.allergen,
-                    "status": assessment.status,
-                    "confidence": round(assessment.confidence, 4),
-                    "explanation": assessment.explanation,
-                    "evidence": supporting_evidence,
+                    "allergen": result["allergen"],
+                    "risk_level": risk_level,
+                    "reason": reason,
                 }
             )
 
+
         # ------------------------------------------
-        # Personalized risk
+        # Determine overall personalized result
         # ------------------------------------------
 
-        risk_result = None
+        statuses = [
+            str(result["status"]).upper()
+            for result in allergen_results
+        ]
 
-        if product_risk is not None:
 
-            risk_result = {
-                "level": product_risk.overall_risk,
-                "message": product_risk.explanation,
-                "warnings": product_risk.warnings,
-                "allergens": [
-                    {
-                        "allergen": result.allergen,
-                        "risk_level": result.risk_level,
-                        "reason": result.reason,
-                    }
-                    for result in product_risk.allergen_results
-                ],
-            }
+        if "DETECTED" in statuses:
+
+            overall_level = "ALLERGEN_FOUND"
+
+            overall_message = (
+                "A selected allergen was detected in the "
+                "available product evidence."
+            )
+
+            overall_warnings = [
+                "This is an evidence-based screening result and "
+                "not a medical safety determination."
+            ]
+
+        elif "POTENTIAL" in statuses:
+
+            overall_level = "POSSIBLE_ALLERGEN"
+
+            overall_message = (
+                "Potential evidence for a selected allergen was found."
+            )
+
+            overall_warnings = [
+                "The evidence is not conclusive. This is not a "
+                "medical safety determination."
+            ]
+
+        elif "INSUFFICIENT_EVIDENCE" in statuses:
+
+            overall_level = "INSUFFICIENT_EVIDENCE"
+
+            overall_message = (
+                "There is insufficient evidence to determine "
+                "whether the selected allergens are present."
+            )
+
+            overall_warnings = [
+                "The available image or ingredient evidence is insufficient."
+            ]
+
+        elif statuses and all(
+            status == "NOT_DETECTED"
+            for status in statuses
+        ):
+
+            overall_level = "NO_MATCH"
+
+            overall_message = (
+                "No selected allergen was found in the "
+                "available ingredient evidence."
+            )
+
+            overall_warnings = [
+                "No selected allergen was detected in the available evidence.",
+                "This screening result does not guarantee that the product "
+                "is medically safe for you."
+            ]
+
+        else:
+
+            overall_level = "INSUFFICIENT_EVIDENCE"
+
+            overall_message = (
+                "The available evidence was insufficient to "
+                "determine the selected allergens."
+            )
+
+            overall_warnings = [
+                "The screening result is inconclusive."
+            ]
+
+
+        risk_result = {
+            "level": overall_level,
+            "message": overall_message,
+            "warnings": overall_warnings,
+            "allergens": risk_allergens,
+        }
 
         # ------------------------------------------
         # Final API response

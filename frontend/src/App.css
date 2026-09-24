@@ -1,10 +1,11 @@
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: #f5f7fa;
   color: #1f2937;
 }
@@ -13,86 +14,249 @@ body {
   min-height: 100vh;
 }
 
+/* ==========================================
+   HEADER
+========================================== */
+
 .header {
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
-  padding: 24px 40px;
+  padding: 22px 40px;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .header h1 {
   margin: 0;
   font-size: 28px;
+  color: #111827;
 }
 
 .header p {
   margin: 6px 0 0;
   color: #6b7280;
+  font-size: 14px;
 }
+
+/* ==========================================
+   MAIN
+========================================== */
 
 .container {
-  width: 90%;
-  max-width: 900px;
-  margin: 40px auto;
+  width: 92%;
+  max-width: 1000px;
+  margin: 35px auto 60px;
 }
 
+.intro {
+  margin-bottom: 25px;
+}
+
+.intro h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  color: #111827;
+}
+
+.intro p {
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 760px;
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
 .card {
-  background: white;
-  border-radius: 12px;
+  background: #ffffff;
+  border-radius: 14px;
   padding: 28px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .card h2 {
-  margin-top: 0;
+  margin: 0;
+  color: #111827;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #111827;
 }
 
 .description {
   color: #6b7280;
+  line-height: 1.5;
+  margin: 6px 0 0;
 }
 
-.upload-box {
-  margin-top: 20px;
-  padding: 30px;
-  border: 2px dashed #cbd5e1;
-  border-radius: 10px;
-  text-align: center;
+.section-heading {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
 }
 
-.file-name {
-  margin-top: 15px;
+.step-number {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 50%;
+  background: #111827;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
 }
+
+/* ==========================================
+   UPLOAD
+========================================== */
+
+.upload-box {
+  margin-top: 22px;
+  padding: 38px 25px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  text-align: center;
+  background: #fafbfc;
+}
+
+.upload-icon {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.upload-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: bold;
+  color: #111827;
+}
+
+.upload-description {
+  margin: 7px 0 20px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.upload-box input[type="file"] {
+  display: none;
+}
+
+.choose-file-button {
+  display: inline-block;
+  padding: 11px 20px;
+  background: #111827;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.choose-file-button:hover {
+  background: #374151;
+}
+
+.selected-file {
+  margin: 18px auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  background: #eef2f7;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ==========================================
+   ALLERGIES
+========================================== */
 
 .allergy-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 20px;
+  gap: 12px;
+  margin-top: 22px;
 }
 
 .allergy-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 14px;
+  padding: 15px;
   border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: 0.15s ease;
+  background: white;
 }
 
 .allergy-item:hover {
+  border-color: #9ca3af;
   background: #f9fafb;
 }
 
-.allergy-item input {
-  width: 18px;
-  height: 18px;
+.allergy-item.selected {
+  border-color: #111827;
+  background: #f3f4f6;
 }
+
+.allergy-item input {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #9ca3af;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  background: white;
+}
+
+.allergy-item.selected .custom-checkbox {
+  background: #111827;
+  border-color: #111827;
+  color: white;
+}
+
+.allergy-name {
+  font-weight: 600;
+}
+
+.selected-allergies {
+  margin-top: 18px;
+  padding: 12px 14px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
 
 .analyze-button {
   width: 100%;
   padding: 16px;
+  margin: 3px 0 30px;
   border: none;
   border-radius: 10px;
   background: #111827;
@@ -100,19 +264,33 @@ body {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .analyze-button:hover {
   background: #374151;
 }
 
-@media (max-width: 600px) {
-  .allergy-grid {
-    grid-template-columns: 1fr;
-  }
+.analyze-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
 
-  .header {
-    padding: 20px;
+.spinner {
+  width: 17px;
+  height: 17px;
+  border: 2px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -129,103 +307,329 @@ body {
   margin-bottom: 20px;
 }
 
-
-/* ==========================================
-   DISABLED BUTTON
-========================================== */
-
-.analyze-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-
 /* ==========================================
    RESULTS
 ========================================== */
 
 .results-section {
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
-.results-section h2 {
+.results-title {
+  margin-bottom: 18px;
+}
+
+.results-title h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #111827;
+}
+
+.results-title p {
+  margin: 5px 0 0;
+  color: #6b7280;
+}
+
+/* ==========================================
+   OVERALL RESULT
+========================================== */
+
+.overall-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 25px;
+  border-radius: 14px;
   margin-bottom: 20px;
+  border: 1px solid;
 }
 
-.card h3 {
-  margin-top: 0;
+.overall-icon {
+  font-size: 34px;
+  line-height: 1;
 }
 
+.overall-content {
+  flex: 1;
+}
+
+.overall-label {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.overall-content h2 {
+  margin: 4px 0 7px;
+  font-size: 26px;
+}
+
+.overall-content p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.overall-danger {
+  background: #fff1f2;
+  border-color: #fecdd3;
+  color: #9f1239;
+}
+
+.overall-warning {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #9a3412;
+}
+
+.overall-safe {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.overall-insufficient {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #334155;
+}
 
 /* ==========================================
-   RISK
+   STATS
 ========================================== */
 
-.risk-box {
-  margin-top: 15px;
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
   padding: 18px;
-  border-radius: 10px;
-  background: #f3f4f6;
+  text-align: center;
 }
 
-.risk-box strong {
-  font-size: 22px;
+.stat-label {
+  display: block;
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  margin-bottom: 7px;
 }
 
+.stat-card strong {
+  font-size: 23px;
+  color: #111827;
+}
 
 /* ==========================================
-   ALLERGEN RESULT
+   RESULT CARD HEADING
 ========================================== */
+
+.result-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+/* ==========================================
+   ALLERGEN RESULTS
+========================================== */
+
+.allergen-results {
+  margin-top: 18px;
+}
 
 .allergen-result {
   border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 18px;
-  margin-top: 15px;
+  border-radius: 12px;
+  padding: 19px;
+  margin-top: 12px;
+  background: white;
+}
+
+.allergen-result.status-detected {
+  border-left: 5px solid #dc2626;
+}
+
+.allergen-result.status-potential {
+  border-left: 5px solid #f59e0b;
+}
+
+.allergen-result.status-not-detected {
+  border-left: 5px solid #16a34a;
+}
+
+.allergen-result.status-insufficient {
+  border-left: 5px solid #64748b;
 }
 
 .allergen-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 
-.allergen-header strong {
+.allergen-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.allergen-title strong {
   font-size: 18px;
 }
 
-.allergen-header span {
-  padding: 6px 10px;
-  border-radius: 6px;
-  background: #f3f4f6;
-  font-size: 13px;
-  font-weight: bold;
+.status-icon {
+  font-size: 17px;
 }
 
+.status-badge {
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+}
+
+.status-detected .status-badge {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-potential .status-badge {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.status-not-detected .status-badge {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-insufficient .status-badge {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.confidence-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.confidence-row strong {
+  color: #111827;
+}
+
+.explanation {
+  margin: 12px 0 0;
+  color: #4b5563;
+  line-height: 1.5;
+}
 
 /* ==========================================
    EVIDENCE
 ========================================== */
 
 .evidence {
-  margin-top: 15px;
+  margin-top: 17px;
   padding: 15px;
-  background: #f9fafb;
-  border-radius: 8px;
+  background: #f8fafc;
+  border-radius: 9px;
+}
+
+.evidence-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #374151;
 }
 
 .evidence-item {
-  margin-top: 12px;
+  margin-top: 9px;
   padding: 12px;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
 }
 
-.evidence-item p {
-  margin: 5px 0;
+.evidence-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 5px 0;
+  font-size: 13px;
 }
 
+.evidence-row span {
+  color: #6b7280;
+}
+
+.evidence-row strong {
+  color: #111827;
+  text-align: right;
+}
+
+/* ==========================================
+   RISK
+========================================== */
+
+.risk-badge {
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.risk-high {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.risk-medium {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.risk-low {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.risk-insufficient_evidence {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.risk-message {
+  margin-top: 18px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+.warning-list {
+  margin-top: 12px;
+  padding: 13px 15px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  border-radius: 8px;
+  line-height: 1.5;
+}
 
 /* ==========================================
    INGREDIENTS
@@ -234,13 +638,94 @@ body {
 .ingredients-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 15px;
+  gap: 9px;
+  margin-top: 18px;
 }
 
 .ingredient-tag {
-  padding: 7px 10px;
+  padding: 9px 12px;
   background: #f3f4f6;
-  border-radius: 6px;
-  font-size: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.no-data {
+  margin: 18px 0 0;
+  color: #6b7280;
+}
+
+/* ==========================================
+   DISCLAIMER
+========================================== */
+
+.disclaimer {
+  margin-top: 18px;
+  padding: 16px 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+  .header {
+    padding: 20px;
+  }
+
+  .container {
+    width: 94%;
+    margin-top: 25px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .allergy-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .allergen-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .result-card-heading {
+    flex-direction: column;
+  }
+
+  .evidence-row {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .evidence-row strong {
+    text-align: left;
+  }
+}
+
+@media (max-width: 450px) {
+  .allergy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overall-result {
+    padding: 19px;
+  }
+
+  .overall-content h2 {
+    font-size: 22px;
+  }
 }
